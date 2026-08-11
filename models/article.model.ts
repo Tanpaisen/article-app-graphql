@@ -1,0 +1,19 @@
+import mongoose from "mongoose";
+
+const articleSchema = new mongoose.Schema({
+    title: String,
+    avatar: String,
+    description: String,
+    categoryId: String,
+    status: String,
+    deleted: {
+        type: Boolean,
+        default: false,
+    },
+    deleteAt: Date,
+}, {
+    timestamps: true
+});
+const Article = mongoose.model('Article', articleSchema, 'articles');
+
+export default Article;
