@@ -3,7 +3,6 @@ import Category from "./models/category.model";
 
 export const resolvers = {
     Query: {
-        hello: () => 'Hello, World!',
         getListArticles: async () => {
             const articles = await Article.find({
                 deleted: false
@@ -71,6 +70,16 @@ export const resolvers = {
                 deleted: false
             })
             return article;
+        }
+    },
+
+    Article: {
+        category: async (article) => {
+            const category = await Category.findOne({
+                _id: article.categoryId,
+                deleted: false
+            });
+            return category;
         }
     }
 }

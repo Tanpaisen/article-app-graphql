@@ -4,7 +4,8 @@ export const typeDefs =
         id: ID,
         title: String,
         avatar: String,
-        description: String
+        description: String,
+        category: Category
     }
     input ArticleInput {
         title: String,
@@ -22,7 +23,6 @@ export const typeDefs =
         updateArticle(id: ID, input: ArticleInput): Article
     }
     type Query {
-        hello: String
         getListArticles: [Article]
         getDetailArticle(id: ID): Article
 
