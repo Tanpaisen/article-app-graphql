@@ -4,7 +4,9 @@ import cors from "cors";
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@as-integrations/express5';
 import * as database from "./config/database";
-import Article from "./models/article.model";
+
+import { typeDefs } from "./typeDefs";
+import { resolvers } from "./resolvers";
 
 const startServer = async () => {
     dotenv.config();
@@ -12,18 +14,6 @@ const startServer = async () => {
 
     const app: Express = express();
     //Graphql
-    const typeDefs = `#graphql
-    type Query {
-        hello: String
-    }
-`;
-
-    const resolvers = {
-        Query: {
-            hello: () => 'Hello, World!'
-        }
-    };
-
     const apolloServer = new ApolloServer({
         typeDefs,
         resolvers
