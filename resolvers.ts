@@ -28,6 +28,15 @@ export const resolvers = {
             const article = new Article(data);
             await article.save();
             return article;
+        },
+        deleteArticle: async (_, args) => {
+            await Article.updateOne({
+                _id: args.id,
+                deleted: false
+            },{
+                deleted: true,
+            })
+            return "Article deleted successfully";
         }
     }
 }

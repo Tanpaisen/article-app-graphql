@@ -13,6 +13,7 @@ export const typeDefs =
     }
     type Mutation {
         createArticle(input: ArticleInput): Article
+        deleteArticle(id: ID): String
     }
     type Query {
         hello: String
