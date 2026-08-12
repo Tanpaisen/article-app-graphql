@@ -18,6 +18,13 @@ export const resolvers = {
             return article;
         },
 
+        getDetailCategories: async (_, args) => {
+            const category = await Category.findOne({
+                deleted: false,
+                _id: args.id
+            })
+            return category;
+        },
         getListCategories: async (_, args) => {
             const categories = await Category.find({
                 deleted: false

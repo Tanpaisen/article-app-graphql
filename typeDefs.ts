@@ -27,5 +27,6 @@ export const typeDefs =
         getDetailArticle(id: ID): Article
 
         getListCategories: [Category]
+        getDetailCategories(id: ID): Category
     }
 `;
