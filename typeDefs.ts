@@ -14,6 +14,7 @@ export const typeDefs =
     type Mutation {
         createArticle(input: ArticleInput): Article
         deleteArticle(id: ID): String
+        updateArticle(id: ID, input: ArticleInput): Article
     }
     type Query {
         hello: String

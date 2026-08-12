@@ -9,7 +9,7 @@ export const resolvers = {
             });
             return articles;
         },
-        getDetailArticle: async (_,args) => {
+        getDetailArticle: async (_, args) => {
             const article = await Article.findOne({
                 deleted: false,
                 _id: args.id
@@ -33,10 +33,29 @@ export const resolvers = {
             await Article.updateOne({
                 _id: args.id,
                 deleted: false
-            },{
+            }, {
                 deleted: true,
             })
             return "Article deleted successfully";
+        },
+        updateArticle: async (_, args) => {
+            const data = {
+                title: args.input.title,
+                avatar: args.input.avatar,
+                description: args.input.description,
+            };
+            await Article.updateOne(
+                {
+                    _id: args.id,
+                    deleted: false
+                },
+                { $set: data },
+            );
+            const article = await Article.findOne({
+                _id: args.id,
+                deleted: false
+            })
+            return article;
         }
     }
 }
