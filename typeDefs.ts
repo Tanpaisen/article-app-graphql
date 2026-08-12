@@ -11,6 +11,11 @@ export const typeDefs =
         avatar: String,
         description: String
     }
+    type Category {
+        id: ID,
+        title: String,
+        avatar: String,
+    }
     type Mutation {
         createArticle(input: ArticleInput): Article
         deleteArticle(id: ID): String
@@ -20,5 +25,7 @@ export const typeDefs =
         hello: String
         getListArticles: [Article]
         getDetailArticle(id: ID): Article
+
+        getListCategories: [Category]
     }
 `;
