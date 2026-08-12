@@ -16,5 +16,18 @@ export const resolvers = {
             })
             return article;
         }
+    },
+
+    Mutation: {
+        createArticle: async (_, args) => {
+            const data = {
+                title: args.input.title,
+                avatar: args.input.avatar,
+                description: args.input.description,
+            }
+            const article = new Article(data);
+            await article.save();
+            return article;
+        }
     }
 }
