@@ -8,6 +8,7 @@ export const typeDefs =
     }
     type Query {
         hello: String
-        articles: [Article]
+        getListArticles: [Article]
+        getDetailArticle(id: ID): Article
     }
 `;
